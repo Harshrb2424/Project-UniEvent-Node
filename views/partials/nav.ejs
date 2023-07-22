@@ -1,0 +1,22 @@
+<div id="nav">
+  <div>
+    <img class="logo" src="/Images/logo_svg.svg" alt="" />
+    <h1>UniEvents</h1>
+  </div>
+
+
+  <div class="links">
+    <a href="/">Home</a>
+    <% if (user){ %>
+      <a href="/#events">Events</a>
+      <a href="/add">Add Events</a>
+      <div>    <form  class="button" action="/logout" method="post">
+        <button type="submit">Logout</button>
+      </form></div>
+      <img class="profile" src="<%= user.photos[0].value %>" alt="">
+      <% } else { %>
+    <a href="/auth/google">Events</a>
+    <div class="button" ><a href="/auth/google">Login</a></div>
+    <% } %>
+  </div>
+</div>

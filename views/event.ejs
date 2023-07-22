@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/header") %>
+  <body>
+    <%- include("partials/nav") %> 
+    <% if (user) { %>
+    <div id="home">
+      <div>
+        <h2 class="title"><%= event.title %></h2>
+        <p class="copy"><%= event.date %></p>
+        <p class="copy"><%= event.Time %></p>
+      </div>
+      <div>
+        <img src="<%= event.poster %>" alt="">
+      </div>
+    </div>
+    <% } else { %>
+    <div id="home">
+      <div>
+        <h2 class="title">Error</h2>
+        <p class="copy">Something went Wrong</p>
+      </div>
+      <div>
+        <img src="/Images/404.svg" alt="">
+      </div>
+    </div>
+    <% } %>
+
+    <div id="shape1"></div>
+    <div id="shape2"></div>
+    <div id="shape3"></div>
+  </body>
+</html>
