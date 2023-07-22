@@ -44,12 +44,12 @@ passport.deserializeUser(function(obj, cb) {
 
 
 /*  Google AUTH  */
-import defaultExport, { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from "./client.js";
-
+// * .env //
+require("dotenv").config();
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 passport.use(new GoogleStrategy({
-    clientID: GOOGLE_CLIENT_ID,
-    clientSecret: GOOGLE_CLIENT_SECRET,
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
