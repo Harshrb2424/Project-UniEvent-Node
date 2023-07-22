@@ -1,62 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>MCU</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCU</title>
 
- <link
- rel="stylesheet"
- href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-/>
-</head>
-<body style="margin: 20px;">
- <form action="/add" method="post">
-  <h1>Title</h1>
-  <input type="text" name="title" id="title"><br><br>
-  <h1>Date</h1>
-  <input type="text" name="date" id="name">
-  <h1>Time</h1>
-  <input type="text" name="Time" id="name">
-  <h1>Location</h1>
-  <input type="text" name="location" id="name">
-  <h1>Type</h1>
-  <input type="text" name="type" id="name">
-  <h1>Category</h1>
-  <input type="text" name="location" id="name">
-  <h1>Duration</h1>
-  <input type="text" name="duration" id="name">
-  <h1>Pricing</h1>
-  <input type="text" name="pricing" id="name">
-  <h1>Duration</h1>
-  <input type="text" name="Description" id="name">
-  <h1>Terms and Conditions</h1>
-  <input type="text" name="Terms" id="name">
-  <h1>Poster</h1>
-  <input type="text" name="poster" id="name">
-  <h1>Picture</h1>
-  <input type="text" name="picture" id="name">
-  <h1>UEID</h1>
-  <input type="text" name="UEID" id="name">
-  
-  <!-- <h1>Release Date</h1> <p>YYYYMMDD</p>
-  <input type="number" name="id" id="id">
-  <h1>Poster</h1>
-  <input type="text" name="poster" id="poster"><br><br>
-  <img src="https://terrigen-cdn-dev.marvel.com/content/prod/1x/guardiansofthegalaxyvolume3_lob_crd_02.jpg" alt="">
-  <h1>Home Poster</h1>
-  <input type="text" name="home" id="home"><br><br>
-  <img src="https://terrigen-cdn-dev.marvel.com/content/prod/1x/guardiansofthegalaxyvolume3_lob_mas_dsk_02.jpg" alt="">
-  <h1>Title Image</h1>
-  <input type="text" name="title_image" id="title_image"><br><br>
-  <img src="https://terrigen-cdn-dev.marvel.com/content/prod/1x/guardiansofthegalaxyvolume3_lob_log_def_02.png" alt="">
-  <h1>Gallery</h1>
-  <input type="text" name="gallery" id="gallery1">
-  <input type="text" name="gallery" id="gallery3">
-  <input type="text" name="gallery" id="gallery2">
-  <input type="text" name="gallery" id="gallery4"> -->
-  <button type="submit">submit</button>
- </form>
-</body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body style="margin: 20px">
+    <form action="/add" method="post">
+      <h1>Title</h1>
+      <input type="text" name="title" id="title" /><br /><br />
+      <h1>Date</h1>
+      <input type="date" name="date" id="date"  />
+      <h1>Time</h1>
+      <input type="time" id="time" name="time" />
+      <h1>Duration (in hrs)</h1>
+      <input type="number" id="duration" name="duration" />
+      <h1>Location</h1>
+      <input type="text" name="location" id="location" />
+      <h1>Type</h1>
+      <input type="radio" id="public" name="type" value="public" />
+      <label for="html">Public</label><br />
+      <input type="radio" id="private" name="type" value="private" />
+      <label for="css">Private</label><br />
+      <h1>Category</h1>
+      <select name="category" id="category">
+        <option value="music">Music</option>
+        <option value="sports">Sports</option>
+        <option value="workshop">Workshop</option>
+        <option value="comedy">Comedy</option>
+        <option value="others">Others</option>
+      </select>
+      <h1>Pricing</h1>
+      <input type="number" name="pricing" id="pricing" />
+      <h1>Description</h1>
+      <textarea name="description" id="description" cols="30" rows="4"></textarea>
+      <h1>Poster (Poterate) (url)</h1>
+      <input type="text" name="poster" id="poster"  />
+      <h1>Picture (Landscape) (url)</h1>
+      <input type="text" name="picture" id="picture"  />
+      <h1>UEID</h1>
+      <textarea type="number" id="UEID" name="UEID" rows="2" cols="40"><%= Math.floor(100000000 + Math.random() * 900000000) %></textarea>
+      <button type="submit">submit</button>
+    </form>
+  </body>
 </html>
