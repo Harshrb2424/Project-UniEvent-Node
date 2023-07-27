@@ -2,7 +2,14 @@
 const express = require('express');
 const app = express();
 const session = require('express-session');
+//* Body passer
+var bodyParser = require('body-parser')
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 // css fix
 const ejs = require("ejs");
 app.set("view engine", "ejs");
@@ -44,12 +51,11 @@ passport.deserializeUser(function(obj, cb) {
 
 
 /*  Google AUTH  */
-// * .env //
-require("dotenv").config();
+require("dotenv").config(); 
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
