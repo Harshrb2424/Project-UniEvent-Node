@@ -4,19 +4,24 @@
     <h1>UniEvents</h1>
   </div>
 
-
   <div class="links">
     <a href="/">Home</a>
     <% if (user){ %>
-      <a href="/#events">Events</a>
-      <a href="/add">Add Events</a>
-      <div>    <form  class="button" action="/logout" method="post">
+    <a href="/#events">Events</a>
+    <a href="/#events">Registered</a>
+    <a href="/add">List Your Event</a>
+    <a href="/#about us">About Us</a>
+    <div>
+      <form class="button" action="/logout" method="post">
         <button type="submit">Logout</button>
-      </form></div>
-      <img class="profile" src="<%= user.photos[0].value %>" alt="">
-      <% } else { %>
+      </form>
+    </div>
+    <img class="profile" src="<%= user.photos[0].value %>" alt="" />
+    <% } else { %>
     <a href="/auth/google">Events</a>
-    <div class="button" ><a href="/auth/google">Login</a></div>
+    <a href="/#about us">About Us</a>
+
+    <div class="button"><a href="/auth/google">Login</a></div>
     <% } %>
-  </div>
+  </div>
 </div>

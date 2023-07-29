@@ -51,11 +51,12 @@ passport.deserializeUser(function(obj, cb) {
 
 
 /*  Google AUTH  */
-require("dotenv").config(); 
+// * .env //
+require("dotenv").config();
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 passport.use(new GoogleStrategy({
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
@@ -80,7 +81,6 @@ app.get('/auth/google',
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/error' }),
   function(req, res) {
-    // Successful authentication, redirect success.
     res.redirect('/');
   });
 
@@ -119,6 +119,7 @@ app.get("/event/:UEID", (req, res) => {
   res.render("event", { user: userProfile, event: eventDetails });
 });
 
+
 app.get("/add", function (req, res) {
   res.render("add");
 });
@@ -128,6 +129,51 @@ app.post("/add", function (req, res) {
   console.log("Before Adding data", JSON.stringify(jsonData, null, 4));
 
   jsonData.Events.push(req.body);
+  const jsonString = JSON.stringify(jsonData);
+
+  fs.writeFileSync("data.json", jsonString, "utf-8", (err) => {
+    if (err) throw err;
+    console.log("Data added to file");
+  });
+  // const update_data = fs.readFileSync("data.json");
+  // const updated_jsonData = JSON.parse(update_data);
+  // console.log("After Adding data", JSON.stringify(updated_jsonData, null, 4));
+  res.redirect("/add");
+});
+
+
+// app.post("/register", function (req, res) {
+//   console.log(req.body);
+//   console.log("Before Adding data", JSON.stringify(jsonData, null, 4));
+
+//   jsonData.Events.push(req.body);
+//   const jsonString = JSON.stringify(jsonData);
+
+//   fs.writeFileSync("data.json", jsonString, "utf-8", (err) => {
+//     if (err) throw err;
+//     console.log("Data added to file");
+//   });
+//   // const update_data = fs.readFileSync("data.json");
+//   // const updated_jsonData = JSON.parse(update_data);
+//   // console.log("After Adding data", JSON.stringify(updated_jsonData, null, 4));
+//   res.redirect("/add");
+// });
+app.get("/register/:UEID", (req, res) => {
+  for (var i = 0; i < jsonData.Events.length; i++){
+    if (jsonData.Events[i].UEID == req.params.UEID){
+      eventDetails = jsonData.Events[i];
+      break;
+    }
+  }
+  
+  res.render("register", { user: userProfile, event: eventDetails });
+});
+
+app.post("/register", function (req, res) {
+  console.log(req.body);
+  console.log("Before Adding data", JSON.stringify(jsonData, null, 4));
+
+  jsonData.Register.push(req.body);
   const jsonString = JSON.stringify(jsonData);
 
   fs.writeFileSync("data.json", jsonString, "utf-8", (err) => {

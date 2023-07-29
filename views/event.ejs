@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include("partials/header") %>
-  <body>
-    <%- include("partials/nav") %> 
-    <% if (user) { %>
+  <body
+    style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%)"
+  >
+    <%- include("partials/nav") %> <% if (user) { %>
     <div id="home">
       <div>
         <h2 class="title"><%= event.title %></h2>
-        <p class="copy"><%= event.date %></p>
-        <p class="copy"><%= event.Time %></p>
+        <p class="copy"><%= event.date %> | <%= event.time %></p>
+        <p class="copy"><%= event.location %></p>
+        <p class="copy"><%= event.pricing %></p>
       </div>
       <div>
-        <img src="<%= event.poster %>" alt="">
+        <img src="<%= event.poster %>" alt="" />
+
+        <a href="/register/<%= event.UEID %>">Register</a>
+        <!-- <form class="button" action="/register" method="post">
+          <button type="submit">Register</button>
+        </form> -->
       </div>
+    </div>
+    <div>
+      <h2>Terms and Conditions</h2>
+      <p class="copy"><%= event.Terms %></p>
     </div>
     <% } else { %>
     <div id="home">
@@ -21,13 +32,9 @@
         <p class="copy">Something went Wrong</p>
       </div>
       <div>
-        <img src="/Images/404.svg" alt="">
+        <img src="/Images/404.svg" alt="" />
       </div>
     </div>
     <% } %>
-
-    <div id="shape1"></div>
-    <div id="shape2"></div>
-    <div id="shape3"></div>
-  </body>
+  </body>
 </html>

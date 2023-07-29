@@ -1,15 +1,16 @@
 {
   "name": "unievents",
-  "version": "1.0.2",
+  "version": "1.1.3",
   "description": "UniEvent is a collaborative event management system developed by Harsh RB and Aman Shaikh as a college project using Node.js. The project aims to provide a platform where users can join various events organized by others, as well as create their private and public events to share with others. UniEvent brings people together by fostering community engagement through exciting events and activities.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Harsh RB",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-session": "^1.17.3",

@@ -7,13 +7,16 @@
     <div class="content">
       <h2 class="title"><%= data.Events[i].title %></h2>
       <div class="content-body">
-        <p class="copy"><%= data.Events[i].date %></p>
-        <p class="copy"><%= data.Events[i].Time %></p>
+        <p class="copy">
+          <%= data.Events[i].date %> | <%= data.Events[i].time %>
+        </p>
+        <p class="copy"><%= data.Events[i].location %></p>
+        <p class="copy"><%= data.Events[i].pricing %></p>
       </div>
       <button class="btn">
         <a href="/event/<%= data.Events[i].UEID %>">Learn More</a>
       </button>
     </div>
   </div>
-  <% } %>
+  <% } %>
 </div>
